@@ -1,6 +1,6 @@
-import mongoose, { mongo } from "mongoose";
-
-const userSchema=({
+import mongoose from "mongoose";
+const {Schema} = mongoose;
+const userSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -27,8 +27,7 @@ const userSchema=({
         type: Number,
         default: 0,
       },
-    },
-    { timestamps: true }
+    }, { timestamps: true }
   );
 
 export default mongoose.model('users',userSchema);
