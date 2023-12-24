@@ -76,7 +76,6 @@ try {
       message: "Email not registered "
     })
   }
-  console.log(email,user.password);
 
   const match = await comparePassword(password,user.password);
 
@@ -102,3 +101,9 @@ try {
   })
 }
 }
+
+// test controller
+export const testController=(req,res)=>{
+ res.send('Protected Router')
+}
+
