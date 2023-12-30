@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { AuthProvider } from "./Context/authContext.jsx";
+import "antd/dist/reset.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
