@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../Context/authContext.jsx";
+import SearchInput from "../Form/SearchInput"
 import toast from "react-hot-toast";
 
 const Header = () => {
@@ -34,6 +35,7 @@ const Header = () => {
               🛒 Ecommerce App
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <SearchInput/>
               <li className="nav-item">
                 <NavLink to="/" className="nav-link ">
                   Home
