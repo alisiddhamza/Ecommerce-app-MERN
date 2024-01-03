@@ -44,7 +44,7 @@ const HomePage = () => {
     }
   };
 
-  //getTOtal C0unt
+  //getTotal Count
   const getTotal = async () => {
     try {
       const { data } = await axios.get("http://localhost:8080/api/v1/product/product-count");
@@ -58,6 +58,7 @@ const HomePage = () => {
     if (page === 1) return;
     loadMore();
   }, [page]);
+
   //load more
   const loadMore = async () => {
     try {
@@ -102,7 +103,7 @@ const HomePage = () => {
     }
   };
   return (
-    <Layout title={"ALl Products - Best offers "}>
+    <Layout title={"ALL Products - Best offers "}>
       <div className="container-fluid row mt-3">
         <div className="col-md-2">
           <h4 className="text-center">Filter By Category</h4>
@@ -134,10 +135,11 @@ const HomePage = () => {
             >
               RESET FILTERS
             </button>
+            
           </div>
         </div>
         <div className="col-md-9">
-          <h1 className="text-center">All Products</h1>
+        {products.length === 0? <h5>No Item Found</h5>:<h1 className="text-center">All Products</h1>}
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
@@ -157,9 +159,10 @@ const HomePage = () => {
                 </div>
               </div>
             ))}
+            
           </div>
           <div className="m-2 p-3">
-            {products && products.length < total && (
+          {products && products.length > 0 && products.length < total && (
               <button
                 className="btn btn-warning"
                 onClick={(e) => {
