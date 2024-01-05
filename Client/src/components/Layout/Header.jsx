@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import useCategory from "../../Hooks/useCategory.js";
 import { useCart } from "../../Context/cart.jsx";
 import { Badge } from "antd";
+
+
 const Header = () => {
   const [cart] = useCart();
   const [auth, setAuth] = useAuth();

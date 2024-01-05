@@ -6,6 +6,9 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useCart } from "../Context/cart";
 import toast from "react-hot-toast";
+import "../styles/Homepage.css";
+import { AiOutlineReload } from "react-icons/ai";
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
@@ -107,8 +110,16 @@ const HomePage = () => {
   };
   return (
     <Layout title={"ALL Products - Best offers "}>
-      <div className="container-fluid row mt-3">
-        <div className="col-md-2">
+      {/* banner image */}
+      <img
+        src="/images/banner.png"
+        className="banner-img"
+        alt="bannerimage"
+        width={"100%"}
+      />
+      {/* banner image */}
+      <div className="container-fluid row mt-3 home-page">
+        <div className="col-md-3 filters">
           <h4 className="text-center">Filter By Category</h4>
           <div className="d-flex flex-column">
             {categories?.map((c) => (
@@ -138,7 +149,6 @@ const HomePage = () => {
             >
               RESET FILTERS
             </button>
-
           </div>
         </div>
         <div className="col-md-9">
@@ -181,7 +191,14 @@ const HomePage = () => {
                   setPage(page + 1);
                 }}
               >
-                {loading ? "Loading ..." : "Loadmore"}
+                 {loading ? (
+                  "Loading ..."
+                ) : (
+                  <>
+                    {" "}
+                    Loadmore <AiOutlineReload />
+                  </>
+                )}
               </button>
             )}
           </div>

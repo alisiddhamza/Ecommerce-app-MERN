@@ -148,7 +148,7 @@ export const updateProductController = async (req, res) => {
     const { name, description, price, category, quantity, shipping } =
       req.fields;
     const { photo } = req.files;
-    //alidation
+    //Validation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
