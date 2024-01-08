@@ -8,6 +8,7 @@ import { useCart } from "../Context/cart";
 import toast from "react-hot-toast";
 import "../styles/Homepage.css";
 import { AiOutlineReload } from "react-icons/ai";
+import Spinner from "../components/Spinner";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -108,6 +109,21 @@ const HomePage = () => {
       console.log(error);
     }
   };
+  const handleInfiniteScroll = async ()=>{
+    try {
+      console.log(products);
+      // if(products && (products.length < total)){
+      if(window.innerHeight+document.documentElement.scrollTop+1>=document.documentElement.scrollHeight){
+        setPage(prevPage=>prevPage + 1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(()=>{
+    window.addEventListener("scroll",handleInfiniteScroll);
+    return ()=> window.removeEventListener("scroll",handleInfiniteScroll);
+  },[]);
   return (
     <Layout title={"ALL Products - Best offers "}>
       {/* banner image */}
@@ -199,8 +215,8 @@ const HomePage = () => {
               </div>
             ))}
           </div>
-          <div className="m-2 p-3">
-            {products && products.length < total && (
+          {/* {<div className="m-2 p-3"> */}
+            {/* products && products.length < total && (
               <button
                 className="btn loadmore"
                 onClick={(e) => {
@@ -217,8 +233,11 @@ const HomePage = () => {
                   </>
                 )}
               </button>
-            )}
-          </div>
+            )*/}
+          {loading && <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>}
+          {/* </div> } */}
         </div>
       </div>
     </Layout>

@@ -20,7 +20,7 @@ const AdminDashboard = () => {
           </div>
         </div>
       </div>
-    </Layout>
+      </Layout>
   );
 };
 
